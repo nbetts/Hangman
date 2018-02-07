@@ -2,6 +2,8 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) throws Exception {        
+        DatabaseController dbController = new DatabaseController();
+        
         System.out.println("Welcome to the game of Hangman!\n" +
                            " _   _                                         \n" + 
                            "| | | |                                        \n" + 
@@ -56,7 +58,7 @@ public class Main {
             }
         }
         
-        Hangman hangman = new Hangman("Nathan");
+        Hangman hangman = new Hangman(dbController.getRandomWord(selectedDifficulty));
 
         System.out.println("\nTry to guess the following word:");
         System.out.println(hangman.getPrettyPrintHangmanWord());
