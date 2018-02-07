@@ -4,15 +4,22 @@ public class Main {
     public static void main(String[] args) throws Exception {
         Hangman hangman = new Hangman("Strength");
         
-        System.out.println("Welcome to the game of Hangman!\n" + 
-                           "  _______ \n" + 
-                           "   |   |  \n" + 
+        System.out.println("Welcome to the game of Hangman!\n" +
+                           " _   _                                         \n" + 
+                           "| | | |                                        \n" + 
+                           "| |_| | __ _ _ __   __ _ _ __ ___   __ _ _ __  \n" + 
+                           "|  _  |/ _` | '_ \\ / _` | '_ ` _ \\ / _` | '_ \\ \n" + 
+                           "| | | | (_| | | | | (_| | | | | | | (_| | | | |\n" + 
+                           "\\_| |_/\\____|_| |_|\\___ |_| |_| |_|\\____|_| |_|\n" + 
+                           "  _______           __/ |                      \n" + 
+                           "   |   |           |___/                       \n" +
                            "   |   O  \n" + 
                            "   |  /|\\\n" + 
                            "   |  / \\\n" + 
                            " __|____  \n" + 
                            " |     |  \n\n" +
-                           "Try to guess the hangman word:\n\n " +
+                           "This version allows words containing\n" + 
+                           "numbers. Try to guess the hangman word:\n\n " +
                            hangman.getPrettyPrintHangmanWord() + "\n");
         
         Scanner in = new Scanner(System.in);
