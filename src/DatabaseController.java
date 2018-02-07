@@ -10,7 +10,7 @@ public class DatabaseController {
     private ArrayList<Word> hardWords;
 
     public DatabaseController() {
-        loadWords();
+
     }
     
     public String getRandomWord(Word.DIFFICULTY difficulty) {
