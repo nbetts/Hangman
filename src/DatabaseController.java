@@ -51,18 +51,22 @@ public class DatabaseController {
             String line = reader.readLine();
             
             while (line != null) {
-               Word word = new Word(line.trim());
+               line = line.replaceAll("[^a-zA-Z]", "");
                
-               switch (word.difficulty) {
-                   case EASY:
-                       easyWords.add(word);
-                       break;
-                   case MEDIUM:
-                       mediumWords.add(word);
-                       break;
-                   case HARD:
-                       hardWords.add(word);
-                       break;
+               if (!line.isEmpty()) {
+                   Word word = new Word(line);
+                   
+                   switch (word.difficulty) {
+                       case EASY:
+                           easyWords.add(word);
+                           break;
+                       case MEDIUM:
+                           mediumWords.add(word);
+                           break;
+                       case HARD:
+                           hardWords.add(word);
+                           break;
+                   }
                }
                
                line = reader.readLine();

@@ -18,8 +18,7 @@ public class Main {
                            "   |  / \\\n" + 
                            " __|____  \n" + 
                            " |     |  \n\n" +
-                           "This version allows words containing\n" + 
-                           "numbers. Please enter a difficulty level:\n" +
+                           "Please enter a difficulty level:\n" +
                            " Easy = 1\n" +
                            " Medium = 2\n" +
                            " Hard = 3\n");
@@ -33,7 +32,7 @@ public class Main {
             
             while (line.length() == 0) {
                 System.out.print("> ");
-                line = in.nextLine();
+                line = in.nextLine().replaceAll("[^123]", "");
             }
             
             try {
@@ -76,7 +75,7 @@ public class Main {
             
             while (line.length() == 0) {
                 System.out.print("> ");
-                line = in.nextLine();
+                line = in.nextLine().replaceAll("[^a-zA-Z]", "");
             }
             
             char guessedLetter = line.charAt(0);
