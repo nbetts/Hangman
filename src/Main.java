@@ -26,6 +26,7 @@ public class Main {
         
         Scanner in = new Scanner(System.in);
         Word.DIFFICULTY selectedDifficulty;
+        String selectedWord;
         
         while(true) {
             String line = new String();
@@ -51,14 +52,21 @@ public class Main {
                     default:
                         continue;
                 }
-
-                break;
+                
+                selectedWord = dbController.getRandomWord(selectedDifficulty);
+                
+                if (selectedWord.isEmpty()) {
+                    System.out.println("There aren't any words in this level.");
+                    System.out.println("Please select another difficulty level.");
+                } else {
+                    break;
+                }
             } catch (Exception e) {
                 continue;
             }
         }
         
-        Hangman hangman = new Hangman(dbController.getRandomWord(selectedDifficulty));
+        Hangman hangman = new Hangman(selectedWord);
 
         System.out.println("\nTry to guess the following word:");
         System.out.println(hangman.getPrettyPrintHangmanWord());

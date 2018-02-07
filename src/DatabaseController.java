@@ -15,17 +15,27 @@ public class DatabaseController {
     
     public String getRandomWord(Word.DIFFICULTY difficulty) {
         Random randNumber = new Random();
+        String word = "";
 
         switch (difficulty) {
             case EASY:
-                return easyWords.get(randNumber.nextInt(easyWords.size())).word;
+                if (easyWords.size() > 0) {
+                    word = easyWords.get(randNumber.nextInt(easyWords.size())).word;
+                }
+                break;
             case MEDIUM:
-                return mediumWords.get(randNumber.nextInt(mediumWords.size())).word;
+                if (mediumWords.size() > 0) {
+                    word = mediumWords.get(randNumber.nextInt(mediumWords.size())).word;
+                }
+                break;
             case HARD:
-                return hardWords.get(randNumber.nextInt(hardWords.size())).word;
-            default:
-                return "";
+                if (hardWords.size() > 0) {
+                    word = hardWords.get(randNumber.nextInt(hardWords.size())).word;
+                }
+                break;
         }
+        
+        return word;
     }
 
     public void loadWords() {
@@ -33,12 +43,11 @@ public class DatabaseController {
         mediumWords = new ArrayList<>();
         hardWords = new ArrayList<>();
         
-        String wordListFile = "src/words_test.txt";
+        String wordListFile = "src/words.txt";
         BufferedReader reader = null;
         
         try {
             reader = new BufferedReader(new FileReader(wordListFile));
-            System.out.format("Reading contents from %s:\n", wordListFile);
             String line = reader.readLine();
             
             while (line != null) {
