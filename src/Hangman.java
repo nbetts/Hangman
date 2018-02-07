@@ -5,6 +5,7 @@ public class Hangman {
     private final String originalWord;
     private String hangmanWord;
     private Set<Character> guessedLetters;
+    public HangmanGallows gallows;
     
     public Hangman(String originalWord) throws Exception {
         
@@ -22,6 +23,7 @@ public class Hangman {
         
         this.hangmanWord = stringBuilder.toString();
         this.guessedLetters = new HashSet<>();
+        this.gallows = new HangmanGallows();
     }
     
     public String getOriginalWord() {

@@ -1,18 +1,17 @@
 import java.util.Scanner;
 
 public class Main {
-
     public static void main(String[] args) throws Exception {
         Hangman hangman = new Hangman("Strength");
         
         System.out.println("Welcome to the game of Hangman!\n" + 
-                           "  _______\n" + 
-                           "   |   |\n" + 
-                           "   |   O\n" + 
+                           "  _______ \n" + 
+                           "   |   |  \n" + 
+                           "   |   O  \n" + 
                            "   |  /|\\\n" + 
                            "   |  / \\\n" + 
-                           " __|____\n" + 
-                           " |     |\n\n" +
+                           " __|____  \n" + 
+                           " |     |  \n\n" +
                            "Try to guess the hangman word:\n\n " +
                            hangman.getPrettyPrintHangmanWord() + "\n");
         
@@ -26,6 +25,7 @@ public class Main {
             }
             
             char guessedLetter = line.charAt(0);
+            boolean isLetterWrong = false;
             System.out.println();
             
             if (hangman.isLetterAlreadyGuessed(guessedLetter)) {
@@ -35,16 +35,32 @@ public class Main {
                     System.out.println("Correct!");
                 } else {
                     System.out.println("Oops! Try again.");
+                    isLetterWrong = true;
                 }
             }
             
             System.out.println("Guessed letters: " + hangman.getPrettyPrintGuessedLetters());
-            System.out.println("\n" + hangman.getPrettyPrintHangmanWord());
+            
+            if (isLetterWrong) {
+                hangman.gallows.buildGallows();
+            }
+
+            System.out.println("\n" + hangman.gallows.getPrettyPrintGallows());
+            
+            if (hangman.gallows.isComplete()) {
+                break;
+            }
+            
+            System.out.println(hangman.getPrettyPrintHangmanWord());
         }
         
-        System.out.println("\nWell done! Thanks for playing.");
+        if (hangman.isSolved()) {
+            System.out.println("\nWell done! Thanks for playing.");
+        } else {
+            System.out.println("Oh dear! You lost the game.");
+            System.out.println("The word was \"" + hangman.getOriginalWord() + "\".");
+        }
         
         in.close();
     }
-
 }
