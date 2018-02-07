@@ -1,9 +1,7 @@
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) throws Exception {
-        Hangman hangman = new Hangman("Strength");
-        
+    public static void main(String[] args) throws Exception {        
         System.out.println("Welcome to the game of Hangman!\n" +
                            " _   _                                         \n" + 
                            "| | | |                                        \n" + 
@@ -19,15 +17,55 @@ public class Main {
                            " __|____  \n" + 
                            " |     |  \n\n" +
                            "This version allows words containing\n" + 
-                           "numbers. Try to guess the hangman word:\n\n " +
-                           hangman.getPrettyPrintHangmanWord() + "\n");
+                           "numbers. Please enter a difficulty level:\n" +
+                           " Easy = 1\n" +
+                           " Medium = 2\n" +
+                           " Hard = 3\n");
         
         Scanner in = new Scanner(System.in);
+        Word.DIFFICULTY selectedDifficulty;
+        
+        while(true) {
+            String line = new String();
+            
+            while (line.length() == 0) {
+                System.out.print("> ");
+                line = in.nextLine();
+            }
+            
+            try {
+                int difficulty = Integer.parseInt(line);
+                
+                switch (difficulty) {
+                    case 1:
+                        selectedDifficulty = Word.DIFFICULTY.EASY;
+                        break;
+                    case 2:
+                        selectedDifficulty = Word.DIFFICULTY.MEDIUM;
+                        break;
+                    case 3:
+                        selectedDifficulty = Word.DIFFICULTY.HARD;
+                        break;
+                    default:
+                        continue;
+                }
+
+                break;
+            } catch (Exception e) {
+                continue;
+            }
+        }
+        
+        Hangman hangman = new Hangman("Nathan");
+
+        System.out.println("\nTry to guess the following word:");
+        System.out.println(hangman.getPrettyPrintHangmanWord());
         
         while(!hangman.isSolved()) {
             String line = new String();
             
             while (line.length() == 0) {
+                System.out.print("> ");
                 line = in.nextLine();
             }
             
