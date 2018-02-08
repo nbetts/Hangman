@@ -1,5 +1,18 @@
 import java.util.Scanner;
 
+/**
+ * TODO
+ * Player statistics stored in the DB (don’t forget there are multiple difficulties):
+ * Name
+ * Games played
+ * Games lost
+ * Games won
+ * Win percentage
+ * Least guesses it took to win
+ * Most guesses it took to win
+ * Ability to print out all of a particular players statistics
+ */
+
 public class HangmanController {
     private DatabaseController dbController;
     private Word.DIFFICULTY selectedDifficulty;
@@ -144,6 +157,7 @@ public class HangmanController {
         System.out.println("Would you like to play again? y/n");
         
         while (!line.equals("y") && !line.equals("n")) {
+            System.out.print("> ");
             line = scanner.nextLine().toLowerCase().replaceAll("[^yn]", "");
         }
         
