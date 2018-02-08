@@ -1,6 +1,6 @@
 
 public class HangmanGallows {
-    public static final int FINAL_COMPLETION_STAGE = 13;
+    public static final int FINAL_COMPLETION_STAGE = 14;
 
     private int gallowsCompletionStage;
     

@@ -1,18 +1,5 @@
 import java.util.Scanner;
 
-/**
- * TODO
- * Player statistics stored in the DB (don’t forget there are multiple difficulties):
- * Name
- * Games played
- * Games lost
- * Games won
- * Win percentage
- * Least guesses it took to win
- * Most guesses it took to win
- * Ability to print out all of a particular players statistics
- */
-
 public class HangmanController {
     private DatabaseController dbController;
     private Word.DIFFICULTY selectedDifficulty;
@@ -129,12 +116,11 @@ public class HangmanController {
             }
             
             System.out.println("Guessed letters: " + hangman.getPrettyPrintGuessedLetters());
+            System.out.println("\n" + hangman.gallows.getPrettyPrintGallows());
             
             if (isLetterWrong) {
                 hangman.gallows.buildGallows();
             }
-
-            System.out.println("\n" + hangman.gallows.getPrettyPrintGallows());
             
             if (hangman.gallows.isComplete()) {
                 break;
