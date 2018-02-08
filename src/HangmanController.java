@@ -54,6 +54,10 @@ public class HangmanController {
             while (line.length() == 0) {
                 System.out.print("> ");
                 line = scanner.nextLine().replaceAll("[^123]", "");
+                
+                if (line.length() == 0) {
+                    System.out.println("Please enter 1, 2 or 3.");
+                }
             }
             
             try {
@@ -98,6 +102,10 @@ public class HangmanController {
             while (line.length() == 0) {
                 System.out.print("> ");
                 line = scanner.nextLine().replaceAll("[^a-zA-Z]", "");
+                
+                if (line.length() == 0) {
+                    System.out.println("Please enter a letter.");
+                }
             }
             
             char guessedLetter = line.charAt(0);
@@ -145,6 +153,10 @@ public class HangmanController {
         while (!line.equals("y") && !line.equals("n")) {
             System.out.print("> ");
             line = scanner.nextLine().toLowerCase().replaceAll("[^yn]", "");
+            
+            if (line.length() == 0) {
+                System.out.println("Please enter y or n.");
+            }
         }
         
         if (line.equals("n")) {
